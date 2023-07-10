@@ -1,0 +1,75 @@
+<header class="header">
+    <section class="header__top-header">
+        <p-image class="header__top-header__img" [src]="getSanssImage"
+        alt="Image" height="50"></p-image>
+        <h1 class="header__top-header__h1">SANSS</h1>
+    </section>
+    <section class="header__final-header">
+        <p class="header__final-header__p">Systems and Computer Engineer and Developer</p>
+    </section>
+</header>
+
+<section class="body">
+    <p-tabView class="body__info">
+        <p-tabPanel header="My Projects">
+            <div class="card">
+                <p-carousel [value]="projects" [numVisible]="1" [numScroll]="1" [circular]="false" [responsiveOptions]="responsiveOptions">
+                    <ng-template let-projects pTemplate="item">
+                        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3 body__card__items">
+                            <div class="mb-3">
+                                <p-image *ngIf="isCellphone();else bigsize" height="170" [src]="projects.image" [alt]="projects.name" class="w-6 shadow-2"></p-image>
+                                <ng-template #bigsize>
+                                    <p-image #bigsize height="230" [src]="projects.image" [alt]="projects.name" class="w-6 shadow-2"></p-image>
+                                </ng-template>
+                            </div>
+                            <div class="body__card__items__info">
+                                <h2 class="mb-1">{{ projects.name }}</h2>
+                                <p-tag [value]="projects.inventoryStatus" [severity]="getSeverity(projects.inventoryStatus)"></p-tag>
+                                <div class="car-buttons mt-5">
+                                    <p-button [disabled]="isButtonDisable(projects.inventoryStatus, 'O')" type="button" label="Open" styleClass="p-button-rounded home_button-open"></p-button>
+                                    <p-button (onClick)="openDescription(projects)" [disabled]="isButtonDisable(projects.inventoryStatus, 'D')" type="button" label="Description" styleClass="p-button-rounded home_button-descr"></p-button>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                </p-carousel>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="Personal data">
+            <div class="body__info__personal">
+                <div class="body__info__personal-me">
+                    <p class="body__info__personal-me-title">Santiago Sosa</p>
+                    <p class="body__info__personal-me-text">Ingeniero en Sistemas y Computación</p>
+                    <p class="body__info__personal-me-text">Universidad Tecnológica de Pereira</p>
+                </div>
+                
+                <div class="body__info__personal-experience">
+                    <p class="body__info__personal-experience-subtitle">Experiencia</p>
+                    <p-tree class="body__info__personal-experience-tree" [value]="files"></p-tree>
+                </div>
+
+                <div class="body__info__personal-social">
+                    <p class="body__info__personal-social-title">Contáctame</p>
+                    <div class="body__info__personal-social-div">
+                        <a href="https://twitter.com/Sansso_">
+                            <p-button class="body__info__personal-social-div-buttonT" icon="pi pi-twitter" styleClass="social-fix p-button-rounded"></p-button>
+                        </a>
+                        <a href="https://www.linkedin.com/in/santiago-sosa-herrera-7b7757187/">
+                            <p-button routerLink="https://www.linkedin.com/in/santiago-sosa-herrera-7b7757187/" class="body__info__personal-social-div-buttonL" icon="pi pi-linkedin" styleClass="social-fix p-button-rounded"></p-button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </p-tabPanel>
+    </p-tabView>
+    
+    <div class="body__card-description" *ngIf="isDescriptionCardOpen">
+        <p-card header={{project.name}}>
+            <p class="m-0">{{project.description}}</p>
+            <ng-template pTemplate="footer">
+                <p-button (onClick)="closeDescription()" label="Close" icon="pi pi-times" styleClass="p-button-sm p-button-rounded p-button-danger"></p-button>
+            </ng-template>
+        </p-card>
+    </div>
+</section>

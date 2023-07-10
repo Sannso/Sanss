@@ -1,1 +1,96 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+@font-face {
+    font-family: 'LendexPeta';
+    src: url('./assets/fonts/LexendPeta-VariableFont_wght.ttf');
+  }
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('./assets/fonts/RubikPixels-Regular.ttf');
+}
+body {
+    font-family: var(--font-family);
+    background-color: #101728;
+}
+
+
+// card description FIX
+
+.p-card .p-card-footer {
+    padding: 0 !important;
+    display: flex;
+    justify-content: end;
+}
+
+.p-card .p-card-title {
+    margin-bottom: 0 !important;
+}
+
+
+// Fix Tree
+.p-tree {
+    border: 0px solid #dee2e6 !important;
+    padding: 0rem !important;
+    padding-left: 1rem !important;
+}
+
+.p-tree .p-tree-container .p-treenode .p-treenode-content {
+    padding: 0.1rem !important;
+}
+
+
+// Fix Tab-view
+
+.p-tabview.p-component {
+    width: 332px;
+    @media only screen and (min-width: 767px) {
+        width: 600px;
+    }
+}
+
+// Social Buttons of home FIX
+
+.social-fix.p-button.p-button-icon-only.p-button-rounded {
+    height: 2.3rem !important;
+    width: 2.3rem !important;
+}
+
+
+// Buttons home page fix
+.p-button.home_button-open{
+    height: 23px !important;
+    width: 75px !important;
+    margin-right: 5%;
+    font-size: smaller;
+    text-align: start;
+    @media only screen and (min-width: 767px) {
+        height: 33px !important;
+        width: 85px !important;
+        font-size: medium;
+    }
+}
+
+.p-button.home_button-descr{
+    height: 23px !important;
+    width: 110px !important;
+    margin-left: 5%;
+    font-size: smaller;
+    text-align: start;
+    @media only screen and (min-width: 767px) {
+        height: 33px !important;
+        width: 120px !important;
+        font-size: medium;
+    }
+}
+
+
+// principal items fix
+.p-tabview .p-tabview-nav {
+    justify-content: center;
+    padding-top: 1px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
