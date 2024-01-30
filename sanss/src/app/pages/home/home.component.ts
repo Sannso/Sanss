@@ -26,6 +26,9 @@ export class HomeComponent {
   }
 
   ngOnInit() {
+      let imagen:any = document.getElementsByTagName('body')[0];
+      imagen.style.backgroundImage = `url('https://archivos-sanss.s3.amazonaws.com/imgs/backgrounds/${this.getRandomInt(3)}.jpeg')`;
+
       this.projectsService.getProjects().then((values) => {
           this.projects = values;
       });
@@ -52,6 +55,10 @@ export class HomeComponent {
       ];
 
       this.nodeService.getFiles().then((data) => (this.files = data));
+  }
+
+  getRandomInt(max: any) {
+    return Math.floor(Math.random() * max);
   }
 
   getSeverity(status: string) {
@@ -97,10 +104,14 @@ export class HomeComponent {
   openDescription(project: Project){
     this.project = project;
     this.isDescriptionCardOpen = true;
-    console.log("wtf")
   }
 
   closeDescription(){
     this.isDescriptionCardOpen = false;
+  }
+
+  openProject(){
+    let win:any = window.open("https://github.com/Sannso/e-commerce-caro/tree/main/plants-carou", '_blank');
+    win.focus();
   }
 }

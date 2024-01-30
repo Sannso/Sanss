@@ -14,6 +14,12 @@
 body {
     font-family: var(--font-family);
     background-color: #101728;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+
+    @media only screen and (max-width: 1500px) {
+        background-size: auto 100vh;
+    }
 }
 
 
@@ -87,10 +93,29 @@ body {
 }
 
 
-// principal items fix
+// principal items fix view
 .p-tabview .p-tabview-nav {
     justify-content: center;
     padding-top: 1px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    backdrop-filter: blur(10px) !important;
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
+    // Boton Seleccionado
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    backdrop-filter: blur(10px) !important;
+    background-color: rgba(255, 255, 255, 0) !important;
+}
+
+    // No seleccionado
+.p-tabview .p-tabview-nav li .p-tabview-nav-link{
+    backdrop-filter: blur(10px) !important;
+    background-color: rgb(255 255 255 / 25%) !important;
+}
+
+.p-tabview .p-tabview-panels {
+    backdrop-filter: blur(10px) !important;
+    background-color: rgb(255 255 255 / 29%) !important;
 }

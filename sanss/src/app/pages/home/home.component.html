@@ -26,7 +26,7 @@
                                 <h2 class="mb-1">{{ projects.name }}</h2>
                                 <p-tag [value]="projects.inventoryStatus" [severity]="getSeverity(projects.inventoryStatus)"></p-tag>
                                 <div class="car-buttons mt-5">
-                                    <p-button [disabled]="isButtonDisable(projects.inventoryStatus, 'O')" type="button" label="Open" styleClass="p-button-rounded home_button-open"></p-button>
+                                    <p-button (onClick)="openProject()" [disabled]="isButtonDisable(projects.inventoryStatus, 'O')" type="button" label="Open" styleClass="p-button-rounded home_button-open"></p-button>
                                     <p-button (onClick)="openDescription(projects)" [disabled]="isButtonDisable(projects.inventoryStatus, 'D')" type="button" label="Description" styleClass="p-button-rounded home_button-descr"></p-button>
                                 </div>
                             </div>
